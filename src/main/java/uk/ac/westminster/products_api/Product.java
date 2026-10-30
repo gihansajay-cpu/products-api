@@ -8,7 +8,7 @@ public class Product {
 
     public Product(){}
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
