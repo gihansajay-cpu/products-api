@@ -28,7 +28,12 @@ public class ProductController{
     }
 
     @PostMapping("/products")
-    public Product addProduct (@RequestBody Product  product) { // requestbody convert incoming json to java object
+    public Product addProduct (@RequestBody DigitalProduct  product) { // requestbody convert incoming json to java object
+        // @RequestBody Product asks Jacson to build a Product from incoimg JSON
+
+        // THE NEWEST COMMENT ___
+        // made @Requestbody Product as DigitalProduct, bsc of abtrsct, it won't create normal Product objects anymore
+
         return productService.addProduct(product);
     }
 
@@ -42,4 +47,12 @@ public class ProductController{
     public List<Product> search(@RequestParam String name){ //For Filtering, Searching, or Options
         return productService.findByName(name);
     }
+
+
+    @GetMapping("/products/summaries")
+    public List<String> getSummaries(){
+        return productService.getAllSummaries();
+    }
+
+
 }

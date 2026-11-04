@@ -14,6 +14,13 @@ public class ProductService {
     private Long nextId = 1L;
 
 
+    public ProductService(){
+        products.add(new DigitalProduct(nextId++,"Clean Code(E-book)",29.99,"/downloads/clean-code.pdf",4.2));
+        products.add(new PhysicalProduct(nextId++,"27-inch Monitor",249.99,5.4,"61cm  x 18cm"));
+        products.add(new DigitalProduct(nextId++,"Touch Pad",5660,"download/touch pad.pdf",2.5));
+    }
+
+
     // takes no parameters and returns the whole list
     public List<Product> getAllProducts() { //you haven't sent any POST requests to add products yet
         return products;
@@ -62,5 +69,16 @@ public class ProductService {
         return products.stream()
                 .filter(p ->p.getName().contains(name))
                 .toList();
+    }
+
+
+    public List<String>  getAllSummaries(){
+
+        List<String> summaries= new ArrayList<>();
+        for(Product p: products){
+            summaries.add(p.getSummary());
+        }
+        return summaries;
+
     }
 }
